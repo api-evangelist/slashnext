@@ -1,23 +1,73 @@
 aid: slashnext
-name: Slashnext
-description: 'Slashnext is a company surfaced as a portfolio company of norwest-venture-partners, wing-venture-capital
-  and added to the API Evangelist network as a stub for enrichment. Sector: unknown. This profile is a
-  lead awaiting the enrichment pipeline.'
+name: SlashNext
+description: >-
+  SlashNext is an AI-native phishing and social-engineering threat detection
+  company founded by Atif Mushtaq (an architect of FireEye's core malware
+  sandbox). Its Real-Time Phishing Threat Intelligence is delivered through the
+  SlashNext On-demand Threat Intelligence (OTI) REST API at
+  oti.slashnext.cloud, which offers URL and host reputation lookups, real-time
+  cloud SEER-engine URL scanning in both asynchronous and blocking modes, and
+  forensic downloads (screenshot, HTML, and rendered text) keyed by scan id,
+  plus per-tenant API quota status. Responses are available as JSON, CSV, or
+  plaintext and every request authenticates with a per-tenant API key passed as
+  the authkey parameter. SlashNext was acquired by Varonis Systems in August
+  2025 and its detection capabilities are being integrated into the Varonis
+  Email Security and MDDR platform.
 url: https://raw.githubusercontent.com/api-evangelist/slashnext/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - norwest-venture-partners
 - wing-venture-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-acquired-by: varonis-systems
+x-acquisition-date: '2025-08-28'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-- Unknown
-apis: []
+- Security
+- Cybersecurity
+- Phishing
+- Threat Intelligence
+- Email Security
+- Anti-Phishing
+- API
+image: https://slashnext.com/wp-content/uploads/2021/03/SlashNext-Logo.png
+apis:
+- name: SlashNext On-demand Threat Intelligence (OTI) API
+  description: >-
+    RESTful phishing threat intelligence API. Look up URL/host reputation, run
+    real-time SEER-engine URL scans (async url/scan and blocking url/scansync),
+    pull forensic downloads (screenshot/html/text) by scan id, and check API
+    quota. API-key auth via the authkey query parameter; JSON/CSV/plaintext
+    responses.
+  humanURL: https://www.varonis.com/platform/email-security
+  baseURL: https://oti.slashnext.cloud/api/
+  tags:
+  - Threat Intelligence
+  - Phishing
+  - URL Scanning
+  - Reputation
+  properties:
+  - type: Authentication
+    url: authentication/slashnext-authentication.yml
+  - type: Conventions
+    url: conventions/slashnext-conventions.yml
+  - type: ErrorCatalog
+    url: errors/slashnext-error-codes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +76,22 @@ maintainers:
 common:
 - type: Website
   url: https://slashnext.com
+- type: Documentation
+  url: https://www.varonis.com/platform/email-security
+- type: Lifecycle
+  url: lifecycle/slashnext-lifecycle.yml
+- type: Authentication
+  url: authentication/slashnext-authentication.yml
+- type: Conventions
+  url: conventions/slashnext-conventions.yml
+- type: ErrorCatalog
+  url: errors/slashnext-error-codes.yml
+- type: DomainSecurity
+  url: security/slashnext-domain-security.yml
+- type: LLMsTxt
+  url: llms/slashnext-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 6
+  pass: local-v1

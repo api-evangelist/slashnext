@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.sec.gov/Archives/edgar/data/1361113/000117184325005663/exh_991.htm
+versioning:
+  scheme: uri-path
+  current: v1
+  example: https://oti.slashnext.cloud/api/oti/v1/host/reputation
+ownership:
+  acquired_by: Varonis Systems, Inc.
+  acquisition_announced: '2025-09-02'
+  acquisition_completed: '2025-08-28'
+  note: >-
+    SlashNext was acquired by Varonis Systems in August 2025 and is being
+    integrated into the Varonis Email Security / MDDR platform. slashnext.com
+    now 301-redirects to varonis.com. The OTI API host (oti.slashnext.cloud)
+    remains live as of 2026-07-21.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecated_surfaces:
+  - name: SlashNext Phishing Incident Response (Cortex XSOAR integration)
+    status: deprecated
+    source: https://xsoar.pan.dev/docs/reference/integrations/slash-next-phishing-incident-response
+status_page: null
+sla:
+  url: null
+  uptime_target: null

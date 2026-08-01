@@ -1,0 +1,53 @@
+generated: '2026-07-21'
+method: searched
+source: https://techdocs.cyware.com/co/en/slashnext-threat-intelligence.html
+docs: https://xsoar.pan.dev/docs/reference/integrations/slash-next-phishing-incident-response
+api: SlashNext On-demand Threat Intelligence (OTI) API
+base_url: https://oti.slashnext.cloud/api/
+authentication:
+  style: api-key
+  parameter: authkey
+  location: query
+  see: authentication/slashnext-authentication.yml
+response_formats:
+- json
+- csv
+- plaintext
+content_negotiation: >-
+  Callers request threat intelligence in JSON, CSV, or plaintext. JSON is the
+  default and the format used by the SDK/SOAR integrations.
+error_envelope:
+  shape: '{"errorNo": <int>, "errorMsg": <string>}'
+  observed: true
+  example: '{"errorNo":7000,"errorMsg":"Invalid API request method specified, please provide a valid request method."}'
+  see: errors/slashnext-error-codes.yml
+  notes: >-
+    Verified live against https://oti.slashnext.cloud/api/ on 2026-07-21. The
+    OTI API is NOT RFC 9457 problem+json; it uses a proprietary numeric
+    errorNo + human errorMsg envelope returned with an HTTP 200 body.
+async_scan_pattern:
+  description: >-
+    URL scanning is available in two shapes — an asynchronous scan (url/scan)
+    that returns a scanid to poll, and a blocking scan (url/scansync) that waits
+    up to a caller-supplied timeout. Forensic downloads (screenshot/html/text)
+    are keyed by the returned scanid.
+  async_operation: url/scan
+  blocking_operation: url/scansync
+  poll_operation: scan/report
+pagination:
+  documented: false
+  notes: >-
+    Reputation/report responses return bounded result sets (e.g. host/urls
+    accepts a `limit`, default 10); no cursor/offset pagination is documented.
+rate_limiting:
+  model: quota
+  quota_endpoint: quota/status
+  notes: >-
+    Usage is metered per tenant against a daily URL-lookup quota; quota/status
+    reports remaining balance rather than per-request rate-limit headers.
+idempotency:
+  documented: false
+versioning:
+  style: uri-path
+  current: v1
+  example: /api/oti/v1/host/reputation

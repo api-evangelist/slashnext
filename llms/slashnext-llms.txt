@@ -1,0 +1,33 @@
+# SlashNext
+
+> AI-native phishing and social-engineering threat detection. SlashNext delivers Real-Time Phishing Threat Intelligence through the On-demand Threat Intelligence (OTI) REST API — URL/host reputation, real-time cloud SEER-engine URL scanning, and forensic downloads. Acquired by Varonis Systems in August 2025 and integrated into Varonis Email Security.
+
+## APIs
+
+- [SlashNext OTI API base](https://oti.slashnext.cloud/api/): On-demand Threat Intelligence REST API. API-key auth via the `authkey` query parameter. Responses in JSON, CSV, or plaintext.
+
+## Operations
+
+- host/reputation: Retrieve the reputation of a host from the SlashNext cloud database.
+- host/report: Detailed forensic report for a host.
+- host/urls: List URLs associated with a host (limit param, default 10).
+- url/scan: Asynchronous real-time URL scan (SEER engine); returns a scanid to poll.
+- url/scansync: Blocking real-time URL scan with a caller timeout.
+- scan/report: Retrieve results for a prior scanid.
+- download/screenshot: Webpage screenshot for a scanid.
+- download/html: Rendered webpage HTML for a scanid.
+- download/text: Rendered webpage text for a scanid.
+- quota/status: Remaining daily API quota for the tenant.
+
+## Artifacts
+
+- [Authentication](authentication/slashnext-authentication.yml): API-key (authkey) auth profile.
+- [Conventions](conventions/slashnext-conventions.yml): Auth style, response formats, error envelope, async scan pattern, quota-based rate limiting.
+- [Error codes](errors/slashnext-error-codes.yml): Proprietary {errorNo, errorMsg} envelope.
+- [Lifecycle](lifecycle/slashnext-lifecycle.yml): Versioning + Varonis acquisition + deprecated integrations.
+- [Domain security](security/slashnext-domain-security.yml): TLS/HSTS/SPF/DMARC probe of slashnext.com.
+
+## Docs
+
+- [Varonis Email Security (SlashNext)](https://www.varonis.com/platform/email-security)
+- [SlashNext Threat Intelligence (Cyware techdocs)](https://techdocs.cyware.com/co/en/slashnext-threat-intelligence.html)

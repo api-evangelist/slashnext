@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: live probe of https://oti.slashnext.cloud/api/ (2026-07-21)
+docs: https://xsoar.pan.dev/docs/reference/integrations/slash-next-phishing-incident-response
+format: proprietary
+envelope:
+  fields:
+  - name: errorNo
+    type: integer
+    description: Numeric SlashNext error code.
+  - name: errorMsg
+    type: string
+    description: Human-readable error message.
+  transport: >-
+    Returned as a JSON body (content-type application/json) with HTTP status
+    200; callers must inspect errorNo, not the HTTP status.
+errors:
+- errorNo: 7000
+  errorMsg: >-
+    Invalid API path / request method specified, please provide a valid request
+    method (or contact SlashNext Support for the correct API path).
+  meaning: >-
+    The requested OTI API path does not exist, or the HTTP method used is not
+    allowed for that endpoint.
+  observed: true
+notes: >-
+  Only errorNo 7000 was directly observed via unauthenticated live probing on
+  2026-07-21. SlashNext publishes additional codes (authentication failures,
+  quota exceeded, invalid parameters) in its partner OTI API reference, which is
+  gated behind a tenant login; those were not fabricated here. success responses
+  carry errorNo 0.

@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://xsoar.pan.dev/docs/reference/integrations/slash-next-phishing-incident-response
+docs: https://techdocs.cyware.com/co/en/slashnext-threat-intelligence.html
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+  api_key_param: authkey
+  oauth2_flows: []
+  notes: >-
+    The SlashNext On-demand Threat Intelligence (OTI) REST API authenticates
+    every request with a per-tenant API key passed as the `authkey` parameter.
+    No OAuth2 / OpenID Connect surface is documented. The API key is issued by
+    SlashNext (now Varonis) and scoped to the tenant's quota tier.
+schemes:
+- name: authkey
+  type: apiKey
+  in: query
+  parameter: authkey
+  description: >-
+    Per-tenant SlashNext OTI API key. Sent with each request to
+    https://oti.slashnext.cloud/api/ endpoints. Missing/invalid keys return the
+    SlashNext error envelope {"errorNo","errorMsg"}.
+  sources:
+  - docs
